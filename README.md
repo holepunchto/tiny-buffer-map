@@ -1,6 +1,6 @@
 # tiny-buffer-map
 
-A very simple Map for Buffers. Has the same API as JS Map.
+A very simple Map for Buffers. Has the same API as a JS Map.
 
 ## Usage
 ```js
