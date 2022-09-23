@@ -30,3 +30,10 @@ test('iteration', t => {
   }
   t.is(iterated, 5)
 })
+
+test('construct from other', t => {
+  const m = new BufferMap()
+  m.set(b4a.from('hello'), 'world')
+  const m2 = new BufferMap(m)
+  t.is(m2.get(b4a.from('hello')), 'world')
+})

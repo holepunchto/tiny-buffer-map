@@ -1,8 +1,8 @@
 const b4a = require('b4a')
 
 module.exports = class BufferMap {
-  constructor () {
-    this.m = new Map()
+  constructor (other) {
+    this.m = other ? new Map([...other.m]) : new Map()
   }
 
   get size () {
