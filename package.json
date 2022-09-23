@@ -1,6 +1,6 @@
 {
   "name": "tiny-buffer-map",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A very simple map for Buffers",
   "main": "index.js",
   "scripts": {
