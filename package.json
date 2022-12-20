@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/holepunchto/tiny-buffer-map.git"
+    "url": "git+https://github.com/andrewosh/tiny-buffer-map.git"
   },
   "keywords": [
     "buffer",
@@ -17,9 +17,9 @@
   "author": "Andrew Osheroff <andrewosh@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/holepunchto/tiny-buffer-map/issues"
+    "url": "https://github.com/andrewosh/tiny-buffer-map/issues"
   },
-  "homepage": "https://github.com/holepunchto/tiny-buffer-map#readme",
+  "homepage": "https://github.com/andrewosh/tiny-buffer-map#readme",
   "dependencies": {
     "b4a": "^1.6.0"
   },
