@@ -1,5 +1,7 @@
 const b4a = require('b4a')
 
+const enc = 'binary'
+
 module.exports = class BufferMap {
   constructor (other) {
     this.m = other ? new Map([...other.m]) : new Map()
