@@ -20,10 +20,10 @@
     "url": "https://github.com/andrewosh/tiny-buffer-map/issues"
   },
   "homepage": "https://github.com/andrewosh/tiny-buffer-map#readme",
-  "dependencies": {
-    "b4a": "^1.6.0"
-  },
   "devDependencies": {
     "brittle": "^3.0.4"
+  },
+  "dependencies": {
+    "b4a": "^1.6.4"
   }
 }

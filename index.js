@@ -1,51 +1,75 @@
 const b4a = require('b4a')
 
-module.exports = class BufferMap {
-  constructor (other) {
-    this.m = other ? new Map([...other.m]) : new Map()
+module.exports = class TinyBufferMap {
+  constructor (o) {
+    this.m = o ? [...o] : []
   }
 
   get size () {
-    return this.m.size
+    return this.m.length
   }
 
   get (key) {
-    if (b4a.isBuffer(key)) key = b4a.toString(key, 'hex')
-    return this.m.get(key)
+    for (let i = 0; i < this.m.length; i++) {
+      const w = this.m[i]
+      const k = w[0]
+      if (equals(k, key)) return w[1]
+    }
+
+    return undefined
   }
 
   set (key, value) {
-    if (b4a.isBuffer(key)) key = b4a.toString(key, 'hex')
-    return this.m.set(key, value)
+    for (let i = 0; i < this.m.length; i++) {
+      const w = this.m[i]
+      const k = w[0]
+      if (equals(k, key)) {
+        w[1] = value
+        return
+      }
+    }
+
+    this.m.push([key, value])
   }
 
   delete (key) {
-    if (b4a.isBuffer(key)) key = b4a.toString(key, 'hex')
-    return this.m.delete(key)
+    for (let i = 0; i < this.m.length; i++) {
+      const w = this.m[i]
+      const k = w[0]
+      if (equals(k, key)) {
+        this.m.splice(i, 1)
+        return
+      }
+    }
   }
 
   has (key) {
-    if (b4a.isBuffer(key)) key = b4a.toString(key, 'hex')
-    return this.m.has(key)
+    return this.get(key) !== undefined
   }
 
   * [Symbol.iterator] () {
-    for (const [key, value] of this.m) {
-      yield [b4a.from(key, 'hex'), value]
+    for (let i = 0; i < this.m.length; i++) {
+      yield this.m[i]
     }
   }
 
   * keys () {
-    for (const key of this.m.keys()) {
-      yield b4a.from(key, 'hex')
+    for (let i = 0; i < this.m.length; i++) {
+      yield this.m[i][0]
     }
   }
 
-  values () {
-    return this.m.values()
+  * values () {
+    for (let i = 0; i < this.m.length; i++) {
+      yield this.m[i][1]
+    }
   }
 
   clear () {
-    return this.m.clear()
+    this.m = []
   }
+}
+
+function equals (a, b) {
+  return a.equals ? a.equals(b) : b4a.equals(a, b)
 }
