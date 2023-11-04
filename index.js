@@ -13,7 +13,7 @@ module.exports = class TinyBufferMap {
     for (let i = 0; i < this.m.length; i++) {
       const w = this.m[i]
       const k = w[0]
-      if (b4a.compare(k, key) === 0) return w[1]
+      if (equals(k, key)) return w[1]
     }
 
     return undefined
@@ -23,7 +23,7 @@ module.exports = class TinyBufferMap {
     for (let i = 0; i < this.m.length; i++) {
       const w = this.m[i]
       const k = w[0]
-      if (b4a.compare(k, key) === 0) {
+      if (equals(k, key)) {
         w[1] = value
         return
       }
@@ -36,7 +36,7 @@ module.exports = class TinyBufferMap {
     for (let i = 0; i < this.m.length; i++) {
       const w = this.m[i]
       const k = w[0]
-      if (b4a.compare(k, key) === 0) {
+      if (equals(k, key)) {
         this.m.splice(i, 1)
         return
       }
