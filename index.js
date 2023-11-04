@@ -1,3 +1,5 @@
+const b4a = require('b4a')
+
 module.exports = class TinyBufferMap {
   constructor (o) {
     this.m = o ? [...o] : []
@@ -11,7 +13,7 @@ module.exports = class TinyBufferMap {
     for (let i = 0; i < this.m.length; i++) {
       const w = this.m[i]
       const k = w[0]
-      if (k.equals ? k.equals(key) : k === key) return w[1]
+      if (b4a.compare(k, key) === 0) return w[1]
     }
 
     return undefined
@@ -21,7 +23,7 @@ module.exports = class TinyBufferMap {
     for (let i = 0; i < this.m.length; i++) {
       const w = this.m[i]
       const k = w[0]
-      if (k.equals ? k.equals(key) : k === key) {
+      if (b4a.compare(k, key) === 0) {
         w[1] = value
         return
       }
@@ -34,7 +36,7 @@ module.exports = class TinyBufferMap {
     for (let i = 0; i < this.m.length; i++) {
       const w = this.m[i]
       const k = w[0]
-      if (k.equals ? k.equals(key) : k === key) {
+      if (b4a.compare(k, key) === 0) {
         this.m.splice(i, 1)
         return
       }
@@ -66,4 +68,8 @@ module.exports = class TinyBufferMap {
   clear () {
     this.m = []
   }
+}
+
+function equals (a, b) {
+  return a.equals ? a.equals(b) : b4a.equals(a, b)
 }

@@ -22,5 +22,8 @@
   "homepage": "https://github.com/andrewosh/tiny-buffer-map#readme",
   "devDependencies": {
     "brittle": "^3.0.4"
+  },
+  "dependencies": {
+    "b4a": "^1.6.4"
   }
 }
